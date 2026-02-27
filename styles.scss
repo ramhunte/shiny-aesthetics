@@ -1,0 +1,88 @@
+/*-- scss:defaults --*/
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+$font-poppins: "Poppins", sans-serif;
+
+
+$blue_dark: #042A2B;
+$blue_light: #5EB1BF;
+$green: #3D7068;
+$grey: #77878B;
+$green_grey: #3A4E48;
+$eggshell: #EEEBD3;
+$mint: #59C9A5;
+$gold: #B7990D;
+$body-bg: $blue_dark;
+$body-color: $eggshell;
+$heading-color: $grey;
+$link-color: $gold;
+$code-bg: transparent;
+$code-color: $gold;
+$code-block-color: $blue_dark;
+$code-block-bg: $green_grey;
+$footer-bg-color: $mint;
+
+p {
+    background-color: $body-bg;
+    color: $body-color;
+    font-family: $font-poppins;
+}
+
+hr {
+    border: 2px solid $green;
+    border-radius: 3px;
+}
+
+// slide title 
+
+.s-title {
+    font-family: $font-poppins;
+    color: $blue_light;
+    font-size: 1.5em;
+    text-align: center;
+    justify-content: center;
+}
+
+.download-button {
+    color: $blue_dark;
+    background-color: $blue_dark;
+    border: 4px solid $mint;
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 5px;
+    font-family: $font-poppins;
+    font-size: .8em;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 2.25rem;
+}
+
+/* base thumbnail styling — rounded, cropped, shadowed */
+.examples {
+    border-radius: 1rem;
+    box-shadow: 0 10px 22px rgba(2, 10, 10, 0.35);
+    position: absolute;
+}
+
+.column {
+    padding-left: -10px;
+    padding-right: -10px;
+}
+
+.reveal .footer {
+    background-color: $grey;
+}
+
+.column-header {
+    font-weight: bold;
+    color: #5EB1BF;
+    text-align: center;
+}
+
+.number-header {
+    font-weight: bold;
+    color: #5EB1BF;
+}
