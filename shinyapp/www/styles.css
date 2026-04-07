@@ -1,0 +1,21 @@
+/* Custom styles for Palmer Penguins Explorer */
+
+/* Changing input label styles */
+.control-label {
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+    color: #021d31ff !important;
+    text-decoration: underline !important;
+}
+
+/* Customizing card headers */
+.card-header {
+    background-color: teal !important;
+    color: white !important;
+    font-style: italic !important;
+}
+
+/* Adjusting main background */
+.bslib-sidebar-layout>.main {
+    background-color: #021d31ff !important;
+}

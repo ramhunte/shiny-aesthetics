@@ -95,14 +95,21 @@ server <- function(input, output) {
         x = "Flipper Length (mm)",
         y = "Body Mass (g)",
         color = tools::toTitleCase(input$color_var)
-      ) +
-      theme_minimal()
+      )
 
     if (input$show_smooth) {
       p <- p + geom_smooth(method = "lm", se = FALSE)
     }
 
-    p
+    p +
+      theme(
+        text = element_text(size = 16),
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 16),
+        plot.title = element_text(size = 18),
+        legend.text = element_text(size = 14),
+        legend.title = element_text(size = 16)
+      )
   })
 
   output$penguin_table <- renderTable({

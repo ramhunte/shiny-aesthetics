@@ -2,6 +2,8 @@ library(shiny)
 library(bslib)
 library(palmerpenguins)
 library(ggplot2)
+library(fontawesome)
+library(thematic)
 
 ui <- page_navbar(
   title = "Palmer Penguins Explorer",
@@ -13,8 +15,14 @@ ui <- page_navbar(
     "navbar-bg" = "#021d31ff", # navbar background
     primary = "#2f99a7ff", # accents
     base_font = font_google("Roboto"), # fonts
-    heading_font = font_google("Roboto Slab") # fonts
+    heading_font = font_google("Pacifico") # fonts
   ),
+
+  tags$head(tags$link(
+    rel = "stylesheet",
+    type = "text/css",
+    href = "styles.css"
+  )),
 
   nav_panel(
     "Scatter Plot",
@@ -41,10 +49,56 @@ ui <- page_navbar(
           "show_smooth",
           "Show trend line",
           value = FALSE
+        ),
+        htmltools::img(
+          src = "sablefish.jpg",
+          width = "100%",
+          style = "margin-top: 1rem; border-radius: 6px;"
+        ),
+        htmltools::tags$div(
+          "Image: Sablefish",
+          style = "font-size: 0.9rem; color: #555; text-align: center; margin-top: 0.1rem;"
         )
       ),
+
+      layout_column_wrap(
+        columns = 3,
+        value_box(
+          value = nrow(penguins),
+          title = "Total Penguins",
+          showcase = bsicons::bs_icon("hash"),
+          theme = "primary"
+        ),
+        value_box(
+          value = span(
+            paste(
+              na.omit(unique(as.character(penguins$species))),
+              collapse = ", "
+            ),
+            style = "font-size: 1.5rem;"
+          ),
+          title = "Penguin Species",
+          showcase = bsicons::bs_icon("feather"),
+          theme = "success"
+        ),
+        value_box(
+          value = span(
+            paste(
+              na.omit(unique(as.character(penguins$island))),
+              collapse = ", "
+            ),
+            style = "font-size: 1.5rem;"
+          ),
+          title = "Islands",
+          showcase = bsicons::bs_icon("globe"),
+          theme = "info"
+        )
+      ),
+
       card(
+        # style = "background-color: white;",
         card_header("Penguin Flipper Length vs Body Mass"),
+
         plotOutput("penguin_plot")
       )
     )
@@ -106,7 +160,15 @@ server <- function(input, output) {
         y = "Body Mass (g)",
         color = tools::toTitleCase(input$color_var)
       ) +
-      theme_minimal()
+
+      theme(
+        text = element_text(size = 16),
+        axis.text = element_text(size = 14),
+        axis.title = element_text(size = 16),
+        plot.title = element_text(size = 18),
+        legend.text = element_text(size = 14),
+        legend.title = element_text(size = 16)
+      )
 
     if (input$show_smooth) {
       p <- p + geom_smooth(method = "lm", se = FALSE)
@@ -132,6 +194,9 @@ server <- function(input, output) {
   output$summary_stats <- renderPrint({
     summary(penguins)
   })
+
+  thematic::thematic_shiny(font = "auto")
 }
+
 
 shinyApp(ui = ui, server = server)

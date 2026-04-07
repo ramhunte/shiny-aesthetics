@@ -7,7 +7,7 @@ $font-poppins: "Poppins", sans-serif;
 
 
 $blue_dark: #042A2B;
-$blue_light: #5EB1BF;
+$blue_light: #a0dce6;
 $green: #3D7068;
 $grey: #77878B;
 $green_grey: #3A4E48;
@@ -42,7 +42,6 @@ hr {
     color: $blue_light;
     font-size: 1.5em;
     text-align: center;
-    justify-content: center;
 }
 
 .download-button {
@@ -61,15 +60,23 @@ hr {
 }
 
 /* base thumbnail styling — rounded, cropped, shadowed */
-.examples {
+.round {
     border-radius: 1rem;
-    box-shadow: 0 10px 22px rgba(2, 10, 10, 0.35);
-    position: absolute;
+    box-shadow: 0 5px 12px rgba($blue_light, 0.4);
+}
+
+.topic {
+    font-family: $font-poppins;
+    font-style: italic;
+    color: $blue_light;
+    font-size: 2em;
+    text-align: center;
+    justify-content: center;
 }
 
 .column {
-    padding-left: -10px;
-    padding-right: -10px;
+    // padding-left: 2px;
+    // padding-right: 2px;
 }
 
 .reveal .footer {

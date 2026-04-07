@@ -1,9 +1,10 @@
 ---
-title: "Making Shiny shine"
+title: "Aesthetic Shiny Apps"
 author: "Ray Hunter"
 date: "`r format(Sys.Date(), '%B %d, %Y')`"
 format:
   revealjs:
+    embed-resources: true
     # footer: "Ray Hunter, 2025"
     slide-number: true
     theme: 
@@ -13,44 +14,39 @@ format:
 
 <!-- What we will learn -->
 
-<div class="slide-header" style="display:flex;  gap:10px;">
-  <p class="s-title">What we will cover</p> 
-  <img src="images\shiny.svg.png" alt="Shiny Logo" style="height:2.5em; width:auto; margin-top: 0rem;"/>
-</div>
-<hr>
+[What we will cover]{.s-title} 
 
-- Overview of web design (HMTL, CSS, and Javascript)
+- Overview of web design (HTML, CSS, and Javascript)
 - Packages to spice up your Shiny app 
-    - `{bslib}` 
-    - `{thematic}`   
-- Integrating custom elements into Shiny
-    - CSS 
-    - HTML `{htmltools}`
+- Integrating custom HTML + CSS
+
+![](images/shiny.svg.png){.absolute bottom="3%" right="90%" width="15%"}
+![](images/bslib.png){.absolute bottom="3%" right="65%" width="15%"}
+![](images/htmltools.png){.absolute bottom="3%" right="40%" width="15%"}
+![](images/thematic.png){.absolute bottom="3%" right="15%" width="15%"}
 
 ---
 
 <div class="slide-header" style="display:flex;  gap:10px;">
   <img src="images\shiny.svg.png" alt="Shiny Logo" style="height:2.5em; width:auto; margin-top: 0rem;"/>
-  <p class="s-title">can feel boring...</p> 
+  <p class="s-title">Shiny can feel boring</p> 
 </div>
-<hr>
 
-![](images/shinybasic.png)
+
+![](images/shiny_app/shinybasic.png){.round}
 
 ---
 
-[But before we can make Shiny look nice, we need to understand the basics of web design...]{.center}
-
-![](images/webdesign.png){width=40% }
-
+But before we can make Shiny look nice, we need to understand the basics of web design...
 
 
 ---
 
 <!-- Web Design  -->
 
-:::: {.columns}
-::: {.column width="33%"}
+:::: {.layout-ncol=3}
+
+::: {.column .small width="33%"}
 
 [HTML {{< iconify logos:html-5 size=2xl >}}]{.column-header}
 
@@ -59,7 +55,8 @@ format:
 - Blueprints for structuring content
 
 :::
-::: {.column width="33%" }
+
+::: {.column .small width="33%" }
 
 [CSS {{< iconify logos:css-3 size=2xl >}} ]{.column-header}
 
@@ -68,7 +65,8 @@ format:
 - Helps us make things look nice and pretty
 
 :::
-::: {.column width="33%" }
+
+::: {.column .small width="33%" }
 
 [JS <img src="images/js_logo.png" style="width: 42%; height: auto; display: inline-block; vertical-align: bottom; margin-left: -.9em; margin-top: -0.3em;" />]{.column-header style="vertical-align: bottom;"}
 
@@ -77,16 +75,14 @@ format:
 - Makes things move and respond to user actions
 
 :::
+
 ::::
+
+![](images/webdesign.png){.round .absolute bottom="1%" right="-15%" width="25%"}
 
 ---
 
-<div class="slide-header" style="display:flex;  gap:10px;">
-  <p class="s-title">HTML and CSS Basics</p> 
-</div>
-<hr>
-
-![](images/htmltags.jpg){.absolute top=150 right=-200 width="650" height="auto"}
+[HTML and CSS Basics]{.s-title} 
 
 
 :::: {.columns}
@@ -113,52 +109,51 @@ format:
 :::
 ::::
 
-
-
+![](images/htmltags.jpg){.round .absolute top=150 right=-100 width=50%}
 
 ---
 
-[Adding CSS to HTML]{.s-title} 
+[Basic box]{.s-title} 
 
 ```{html, eval=FALSE, echo=TRUE}
-<div style="background: #0b5ed7; padding: 16px; 
-    border-radius: 12px; display: inline-block;">
-<div style="background: #7fbfff; padding: 6px 10px; 
-    border-radius: 8px; font-size: 20px; font-style: italic; 
-    text-decoration: underline; color: #012a4a;">
-<p>HTML and CSS</p>
+<div style="background: red; padding: 16px; border-radius: 
+      12px; display: inline-block;">
+<div style="background: blue; padding: 6px 10px; 
+      border-radius: 8px;">
+<p style="font-size: 20px; font-style: italic; 
+      text-decoration: underline; background: green;">HTML and CSS</p>
 </div>
 </div>
 ```
 
 <br>
 
-<div style="background: #0b5ed7; padding: 16px; border-radius: 12px; display: inline-block;">
-<div style="background: #7fbfff; padding: 6px 10px; border-radius: 8px; font-size: 20px; font-style: italic; text-decoration: underline; color: #012a4a;">
-<p>HTML and CSS</p>
+<div style="background: red; padding: 16px; border-radius: 12px; display: inline-block;">
+<div style="background: blue; padding: 6px 10px; border-radius: 8px;">
+<p style="font-size: 20px; font-style: italic; text-decoration: underline; background: green;">HTML and CSS</p>
 </div>
 </div>
 
 ---
 
-[Adding CSS to HTML]{.s-title} 
+[Sablefish]{.s-title} 
 
 ```{html, eval=FALSE, echo=TRUE}
-<div style="display:flex; justify-content:center; align-items:center; 
-  border:4px solid red; border-radius:12px; padding:1rem; 
-  min-height:220px; width:30%; margin:0.25rem auto 0; box-sizing:border-box; 
-  position:relative;">
-  <img src="images/sablefish.jpg" alt="Sablefish" 
-  style="max-width:100%; height:auto; display:block;" />
+<div style="align-items:center; 
+  border: 4px solid red; border-radius:12px; 
+  padding:1rem; min-height:220px; width:30%; 
+  margin:0.5rem auto 0; position:relative;">
+<img src="images/sablefish.jpg" alt="Sablefish" 
+    style="max-width:100%; height:auto; display:block;" />
     Sablefish
 </div>
 
 ```
 
 
-<div style="display:flex; justify-content:center; align-items:center; 
-  border:4px solid red; border-radius:12px; padding:1rem; 
-  min-height:220px; width:30%; margin:0.5rem auto 0; box-sizing:border-box; position:relative;">
+<div style="align-items:center; 
+  border: 4px solid red; border-radius:12px; padding:1rem; 
+  min-height:220px; width:30%; margin:0.5rem auto 0; position:relative;">
 <img src="images/sablefish.jpg" alt="Sablefish" style="max-width:100%; height:auto; display:block;" />
     Sablefish
 </div>
@@ -168,22 +163,28 @@ format:
 
 [Fortunately we don't need to do this *all* by hand]{.center} 
 
-![](images\shiny.svg.png){style="width: 15%; height: auto; display: block; margin: 0 auto;"}
+![](images/shiny.svg.png){style="width: 15%; height: auto; display: block; margin: 0 auto;"}
 
 
 ::::{.columns}
 ::: {.column width="50%"}
-  - Shiny uses wrappers around HTML, CSS, and JS 
-  - Uses **bootstrap 3** for styling (CSS framework with pre-designed components/styles)
+  - Shiny uses wrappers around `HTML`, `CSS`, and `JS` 
+  - Uses **`bootstrap 3`** for styling (CSS framework with pre-designed components/styles)
 :::
 ::::
 
 
-![](images/shinybasic.png){.absolute top=275 right=-200 width="700" height="auto"}
+![](images/shiny_app/shinybasic.png){.round .absolute top=275 right=-200 width="700" height="auto"}
 
 ---
 
-[But Shiny's default styling can feel a bit dated...]{.title}
+But Shiny's default styling can feel a bit dated...
+
+<br>
+
+[How can we *avoid* writing excessive HTML and CSS?]{.s-title}
+
+![](images/htmltags.jpg){.round fig-align="center" width=80%}
 
 ---
 
@@ -191,7 +192,7 @@ format:
 
 ![](images/bslib.png){style="width: 20%; height: auto; display: block; margin: 0 auto;"}
 
-- Founded on modern **boostrap 5**
+- Founded on modern `bootstrap 5`
 - 20+ pre-built themes (e.g. `flatly`, `minty`, `darkly`)
 - Easily customize colors, fonts, and other design elements 
 - Consolidates design process
@@ -216,6 +217,7 @@ format:
 - bootstrap 5
 - high flexibility
 - `bs_theme()` for pre-built or custom themes
+- uses card based layout 
 
 :::
 :::: 
@@ -243,7 +245,7 @@ format:
 - `page_navbar()`
 - `page_sidebar()`
 - more
-    - `card()`, `value_box()`, `alrert()`
+    - `card()`, `value_box()`, `alert()`
 
 :::
 ::::
@@ -251,7 +253,7 @@ format:
 
 ---
 
-![](images/shinybasic.png){fig-align="center" width=120% height="auto"}
+![](images/shiny_app/shinybasic.png){.round fig-align="center" width=120% height="auto"}
 
 :::: {.columns}
 ::: {.column width="25%"}
@@ -268,7 +270,7 @@ format:
 
 ----
 
-![](images/shinybasic_bslib.png){fig-align="center" width=140%}
+![](images/shiny_app/shinybasic_bslib.png){.round fig-align="center" width=140%}
 
 :::: {.columns}
 ::: {.column width="25%"}
@@ -289,6 +291,8 @@ format:
 
 [Let's try using one of the pre-built themes, `minty`]{.center} 
 
+<br>
+
 ```{r}
 #| code-line-numbers: "4-7"
 #| eval: false
@@ -298,8 +302,8 @@ ui <- page_navbar(
   title = "Palmer Penguins Explorer",
 
   # adding custom bslib theme
-  theme = bs_theme(
-    theme = "minty" # adding a pre-built theme
+  theme = bslib::bs_theme(
+    bootswatch = "minty" # adding a pre-built theme
   )
   # ... Other UI code...
 )
@@ -309,11 +313,13 @@ ui <- page_navbar(
 
 [We are getting there!]{.center} 
 
-![](images/minty.png){fig-align="center" width=100%}
+![](images/shiny_app/minty.png){.round fig-align="center" width=100%}
 
 ---
 
 [Lets add some custom theme on top of `minty`]{.center} 
+
+<br>
 
 ```{r}
 #| code-line-numbers: "4-14"
@@ -324,14 +330,14 @@ ui <- page_navbar(
   title = "Palmer Penguins Explorer",
 
   # adding custom bslib theme
-  theme = bs_theme(
+  theme = bslib::bs_theme(
     bootswatch = "minty", # start with a pre-built theme
     fg = "#293f2fff", # change foreground color
     bg = "#e5f2fcff", # change background color
     "navbar-bg" = "#021d31ff", # navbar background
     primary = "#2f99a7ff", # accents
     base_font = font_google("Roboto"), # fonts
-    heading_font = font_google("Roboto Slab") # fonts
+    heading_font = font_google("Pacifico") # fonts
   )
   # ... Other UI code...
 )
@@ -341,21 +347,243 @@ ui <- page_navbar(
 
 [Looking better]{.center} 
 
-![](images/minty_custom.png){fig-align="center" width=100%}
+![](images/shiny_app/minty_custom.png){.round fig-align="center" width=100%}
+
+But the `ggplot` doesnt follow the theme...
+
+---
+
+
+<div class="slide-header" style="display:flex;  gap:10px;">
+  <img src="images\thematic.png" alt="Thematic Logo" style="height:3.5em; width:auto; margin-top: 0rem;"/>
+  <p class="s-title">dynamic ggplot theme</p> 
+</div>
+
+<br> 
+
+```{r}
+#| code-line-numbers: "3"
+#| eval: false
+#| echo: true
+
+server <- function(input, output) {
+  # ... Server code ...
+  thematic::thematic_shiny(font = "auto") # themes ggplot to bslib
+}
+```
+
 
 
 ---
 
-[bsicons]{.s-title} 
+<div class="slide-header" style="display:flex;  gap:10px;">
+  <img src="images\thematic.png" alt="Thematic Logo" style="height:3.5em; width:auto; margin-top: 0rem;"/>
+  <p class="s-title">dynamic ggplot theme</p> 
+</div>
+
+![](images/shiny_app/minty_thematic.png){.round fig-align="center" width=100%}
 
 ---
 
-[fonts]{.s-title} 
+[Icons and Value Boxes]{.topic}
 
 ---
 
-[{thematic}]{.s-title} 
+[`{bsicons}` ]{.s-title} 
+
+[https://icons.getbootstrap.com/](https://icons.getbootstrap.com/){.center}
+
+![](images/bsicons.png){.round fig-align="center" width=100%}
+
+---
+
+```{r}
+#| eval: false
+#| echo: true
+value_box(
+  value = nrow(penguins),
+  title = "Total Penguins",
+  showcase = bsicons::bs_icon("hash"),
+  theme = "primary"
+)
+```
+
+
+![](images/shiny_app/minty_vb.png){.round fig-align="center" width=100%}
+
+---
+
+[`{shinyWidgets}` ]{.s-title} 
+
+`shinyWidgets::shinyWidgetsGallery()` for full gallery
+
+![](images/shinywidgets.png){.round fig-align="center" width=100%}
+
+---
+
+[HTML and CSS]{.title}
+
+---
+
+
+
+
+![](images/htmltools.png){fig-align="center" width="20%"} 
+
+
+
+:::: {.columns}
+::: {.column width="60%"}
+
+Create custom HTML elements and CSS styles directly in R Shiny with `{htmltools}`
+
+:::
+
+::: {.column width="40%"}
+
+- `tags$p()`
+- `tags$div()`
+- `tags$img()`
+- `tags$style()`
+
+:::
+::::
+
+---
+
+```{r}
+#| eval: false
+#| echo: true
+
+htmltools::tags$img(
+  src = "sablefish.jpg", # adding sablefish image to sidebar
+  width = "100%",
+  style = "margin-top: 1rem; border-radius: 6px;" #CSS
+)
+```
+
+
+![](images/shiny_app/minty_sable.png){.round fig-align="center" width=100%}
+
+---
+
+```{r}
+#| eval: false
+#| echo: true
+
+htmltools::tags$div(
+  "Image: Sablefish",
+  style = "font-size: 0.9rem; color: #555; text-align: center; margin-top: 0.1rem;"
+)
+```
+
+
+![](images/shiny_app/minty_sable_text.png){.round fig-align="center" width=100%}
 
 
 ---
 
+[CSS]{.title} 
+
+---
+
+[Heirarchy of CSS]{.s-title}
+
+
+1. Inline (Highest priority)
+
+```{r, eval=FALSE, echo=TRUE}
+htmltools::tags$img(
+  src = "sablefish.jpg",
+  style = "margin-top: 1rem; border-radius: 6px;" #CSS
+)
+```
+
+2. Internal (medium priority)
+
+```{r, eval=FALSE, echo=TRUE}
+tags$head(tags$style()) # calling CSS rules directly in the app
+```
+
+
+3. `External CSS (Lowest priority, but best practice)`
+
+```{r, eval=FALSE, echo=TRUE}
+tags$head(tags$link()) # calling an external CSS file out of app
+```
+
+
+
+---
+
+## Linking external CSS file
+
+```{r}
+#| code-line-numbers: "7-12"
+#| eval: false
+#| echo: true
+ui <- page_navbar(
+  title = "Palmer Penguins Explorer",
+  theme = bs_theme(
+    #... Theme code...
+  ),
+
+  # Linking extrnal CSS file
+  tags$head(tags$link(
+    rel = "stylesheet",
+    type = "text/css", # type of file
+    href = "styles.css" # file name
+  )),
+  # ...Other UI code...
+)
+
+```
+
+---
+
+![](images/img_css.png){.round fig-align="center" width=100%}
+
+---
+
+![](images/shiny_app/inspector.png){.round fig-align="center" width=100%}
+
+---
+
+Targeting the **class** of an element
+
+```{css, eval=FALSE, echo=TRUE}
+.control-label { /* changing label styles */
+    font-weight: bold !important;
+    font-size: 1.1rem !important;
+    color: #021d31ff !important;
+    text-decoration: underline !important;
+}
+
+.card-header { /* changing card header styles */
+    background-color: teal !important;
+    color: white !important;
+    font-style: italic !important;
+}
+
+.bslib-sidebar-layout>.main { /* changing main panel background */
+    background-color: #021d31ff !important;
+}
+```
+
+---
+
+![](images/shiny_app/bslib_css.png){.round fig-align="center" width=100%}
+
+---
+
+---
+
+## Common Selector Types
+
+1. **Element Selector**: targets all elements of a specific type (e.g., `p`, `h1`, `div`).
+2. **Class Selector**: targets elements with a specific class attribute (e.g., `.my-class`).
+3. **ID Selector**: targets a single element with a specific id attribute (e.g., `#my-id`).
+4. **Attribute Selector**: targets element attribute (e.g., `input[type="text"]`).
+5. **Pseudo-class Selector**: targets element state (e.g., `a:hover` for links when hovered).
+
+---
