@@ -44,20 +44,6 @@ hr {
     text-align: center;
 }
 
-.download-button {
-    color: $blue_dark;
-    background-color: $blue_dark;
-    border: 4px solid $mint;
-    display: inline-block;
-    padding: 8px 16px;
-    border-radius: 5px;
-    font-family: $font-poppins;
-    font-size: .8em;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 2.25rem;
-}
 
 /* base thumbnail styling — rounded, cropped, shadowed */
 .round {
@@ -92,4 +78,8 @@ hr {
 .number-header {
     font-weight: bold;
     color: #5EB1BF;
+}
+
+.code-with-filename {
+    margin: 0.5em 0;
 }

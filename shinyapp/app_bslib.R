@@ -4,6 +4,7 @@ library(palmerpenguins)
 library(ggplot2)
 library(fontawesome)
 library(thematic)
+library(shinyWidgets)
 
 ui <- page_navbar(
   title = "Palmer Penguins Explorer",
@@ -18,11 +19,11 @@ ui <- page_navbar(
     heading_font = font_google("Pacifico") # fonts
   ),
 
-  tags$head(tags$link(
-    rel = "stylesheet",
-    type = "text/css",
-    href = "styles.css"
-  )),
+  # tags$head(tags$link(
+  #   rel = "stylesheet",
+  #   type = "text/css",
+  #   href = "styles.css"
+  # )),
 
   nav_panel(
     "Scatter Plot",
@@ -35,7 +36,7 @@ ui <- page_navbar(
           max = 6300,
           value = c(3000, 6000)
         ),
-        selectInput(
+        pickerInput(
           "color_var",
           "Color by:",
           choices = c(
@@ -43,21 +44,26 @@ ui <- page_navbar(
             "Island" = "island",
             "Sex" = "sex"
           ),
-          selected = "species"
+          selected = "species",
+          options = list(
+            style = "btn-primary"
+          )
         ),
         checkboxInput(
           "show_smooth",
           "Show trend line",
           value = FALSE
         ),
+
         htmltools::img(
           src = "sablefish.jpg",
           width = "100%",
           style = "margin-top: 1rem; border-radius: 6px;"
         ),
-        htmltools::tags$div(
-          "Image: Sablefish",
-          style = "font-size: 0.9rem; color: #555; text-align: center; margin-top: 0.1rem;"
+
+        htmltools::tags$p(
+          "Sablefish are deep-sea fish found in the North Pacific, known for their rich flavor and high oil content.",
+          style = "color: teal; font-size: .8rem; font-style: italic;"
         )
       ),
 
@@ -108,11 +114,14 @@ ui <- page_navbar(
     "Data Table",
     layout_sidebar(
       sidebar = sidebar(
-        selectInput(
+        pickerInput(
           "species_filter",
           "Filter by Species:",
           choices = c("All", "Adelie", "Chinstrap", "Gentoo"),
-          selected = "All"
+          selected = "All",
+          options = list(
+            style = "btn-primary"
+          )
         ),
         radioButtons(
           "island_filter",
