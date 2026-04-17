@@ -1,21 +1,24 @@
-/* Custom styles for Palmer Penguins Explorer */
+/* targeting HTML tag <img> */
+img {
+    border: #2f99a7ff solid 2px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-/* Changing input label styles */
+/* targeting HTML class .control-label */
 .control-label {
-    font-weight: bold !important;
-    font-size: 1.1rem !important;
-    color: #021d31ff !important;
-    text-decoration: underline !important;
+    font-weight: bold; 
+    color: #021d31ff; 
+    text-decoration: underline; 
 }
 
-/* Customizing card headers */
 .card-header {
-    background-color: teal !important;
-    color: white !important;
-    font-style: italic !important;
-}
+    background-color: #2f99a7ff;
+    color: white;
+    font-style: italic;
+} 
 
-/* Adjusting main background */
-.bslib-sidebar-layout>.main {
-    background-color: #021d31ff !important;
+/* targeting HTML id */
+#mass_range-label {
+    color: purple;
 }

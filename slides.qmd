@@ -1,7 +1,9 @@
 ---
 title: "Aesthetic Shiny Apps"
 author: "Ray Hunter"
-date: "`r format(Sys.Date(), '%B %d, %Y')`"
+date: today
+date-format: "MMMM DD, YYYY"
+subtitle: "[{{< iconify mdi:github size=xl >}} ramhunte/shiny-aesthetics](https://github.com/ramhunte/shiny-aesthetics)"
 format:
   revealjs:
     embed-resources: true
@@ -24,13 +26,28 @@ extensions:
 ## Topics
 
 - Overview of web design (HTML, CSS, and Javascript)
-- Packages to spice up your Shiny app 
+- Packages to streamline theming of Shiny apps
 - Integrating custom HTML + CSS
 
-![](images/shiny.svg.png){.absolute bottom="3%" right="90%" width="15%"}
-![](images/bslib.png){.absolute bottom="3%" right="65%" width="15%"}
-![](images/htmltools.png){.absolute bottom="3%" right="40%" width="15%"}
-![](images/thematic.png){.absolute bottom="3%" right="15%" width="15%"}
+<br>
+
+:::: {.columns}
+::: {.column width="25%"}
+![](images/shiny.svg.png){fig-align="center" width="60%"}
+:::
+
+::: {.column width="25%"}
+![](images/bslib.png){fig-align="center" width="60%"}
+:::
+
+::: {.column width="25%"}
+![](images/htmltools.png){fig-align="center" width="60%"}
+:::
+
+::: {.column width="25%"}
+![](images/thematic.png){fig-align="center" width="60%"}
+:::
+::::
 
 ---
 
@@ -40,7 +57,7 @@ extensions:
 </div>
 
 
-![](images/shiny_app/shinybasic.png){.round}
+![](images/shiny_app/shinybasic.png){.round .absolute top="13%" left="50%" width="115%" style="transform: translateX(-50%); max-width: none; max-height: none;"}
 
 ---
 
@@ -49,7 +66,7 @@ extensions:
 But before we can make Shiny look nice, we need to understand the basics of web design...
 
 
-![](images/webdesign.png){.round width=35% fig-align="center"}
+![](images/webdesign.png){.round fig-align="center"}
 
 ---
 
@@ -119,7 +136,7 @@ But before we can make Shiny look nice, we need to understand the basics of web 
 :::
 ::::
 
-![](images/htmltags.jpg){.round .absolute top=150 right=-100 width=50%}
+![](images/htmltags.jpg){.round .absolute top=100 right=-120 width=60%}
 
 ---
 
@@ -132,7 +149,7 @@ But before we can make Shiny look nice, we need to understand the basics of web 
 ### Basic Box
 
 ```{.html}
-<div style="margin:0.5rem auto; background: red; padding: 1rem; 
+<div style="background: red; padding: 1rem; 
       border-radius: 12px; width:20%;">
 <div style="background: blue; padding: 6px 10px;">
 <p style="font-size: 20px; font-style: italic; 
@@ -142,7 +159,7 @@ But before we can make Shiny look nice, we need to understand the basics of web 
 </div>
 ```
 <br>
-<div style="margin:0.5rem auto; background: red; padding: 1rem; border-radius: 12px; width:20%;">
+<div style="background: red; padding: 1rem; border-radius: 12px; width:20%;">
 <div style="background: blue; padding: 6px 10px;">
 <p style="font-size: 20px; font-style: italic; text-decoration: underline; background: transparent;">HTML and CSS</p>
 </div>
@@ -153,9 +170,10 @@ But before we can make Shiny look nice, we need to understand the basics of web 
 ### Basic box with image 
 
 ```{.html}
-<div style="border: 4px solid red; border-radius:12px; padding:1rem; 
-      width:25%; margin:0.5rem auto;">
-<img src="images/sablefish.jpg" alt="Sablefish" style="max-width:100%;"/>
+<div style="border: 4px solid red; border-radius:12px; 
+      padding:1rem; width:25%; margin:0.5rem auto;">
+<img src="images/sablefish.jpg" alt="Sablefish" 
+     style="max-width:100%;"/>
 <p>Sablefish</p>
 </div>
 
@@ -263,37 +281,25 @@ But Shiny's default styling can feel a bit dated...
 
 ---
 
-![](images/shiny_app/shinybasic.png){.round fig-align="center" }
-
-:::: {.columns}
-::: {.column width="25%"}
-
-![](images/shiny.svg.png){fig-align="center" width=40%} 
-
-:::
-::: {.column width="75%"}
+![](images/shiny_app/shinybasic.png){.round .absolute top="-5%" left="50%" width="125%" style="transform: translateX(-50%); max-width: none; max-height: none;"}
 
 
-`navbarPage()` `tabPanel()` `sidebarLayout()`
-:::
-::::
+![](images/shiny.svg.png){.absolute left=-5% bottom=14% width=10%}
+
+
+[`navbarPage()` `tabPanel()` `sidebarLayout()`]{.absolute left=-10% bottom=2%}
 
 ----
 
-![](images/shiny_app/shinybasic_bslib.png){.round fig-align="center" }
+![](images/shiny_app/shinybasic_bslib.png){.round .absolute top="-5%" left="50%" width="125%" style="transform: translateX(-50%); max-width: none; max-height: none;"}
 
-:::: {.columns}
-::: {.column width="25%"}
 
-![](images/bslib.png){fig-align="center" width=40%}
+![](images/bslib.png){.absolute left=-5% bottom=14% width=10%}
 
-:::
-::: {.column width="75%"}
 
-`page_navbar()`, `nav_panel()`, `layout_sidebar()`
+[`page_navbar()`, `nav_panel()`, `layout_sidebar()`]{.absolute left=-10% bottom=2%}
 
-:::
-::::
+
 
 ---
 
@@ -317,15 +323,14 @@ ui <- page_navbar(
 
 [We are getting there!]{.center} 
 
-![](images/shiny_app/minty.png){.round fig-align="center" width=100%}
+![](images/shiny_app/minty.png){.round .absolute top="10%" left="50%" width="115%" style="transform: translateX(-50%); max-width: none; max-height: none;"}
 
 ---
 
 [Lets add some custom theme on top of `minty`]{.center} 
 
 
-```{.r filename="ui.R" code-line-numbers="4-14"}
-
+```{.r filename="ui.R" code-line-numbers="4-17"}
 ui <- page_navbar(
   title = "Palmer Penguins Explorer",
 
@@ -334,11 +339,13 @@ ui <- page_navbar(
     bootswatch = "minty", # start with a pre-built theme
     fg = "#293f2fff", # change foreground color
     bg = "#e5f2fcff", # change background color
-    "navbar-bg" = "#021d31ff", # navbar background
     primary = "#2f99a7ff", # accents
     base_font = font_google("Roboto"), # fonts
     heading_font = font_google("Pacifico") # fonts
-  )
+  ),
+
+  navbar_options = bslib::navbar_options(
+    bg = "#021d31ff") # set navigation bar bg color
   # ... Other UI code...
 )
 
@@ -346,16 +353,16 @@ ui <- page_navbar(
 
 ---
 
-[Looking better]{.center} 
+Looking better, but the `ggplot` looks off
 
-![](images/shiny_app/minty_custom.png){.round fig-align="center" width=100%}
+![](images/shiny_app/minty_custom.png){.round .absolute top="10%" left="50%" width="115%" style="transform: translateX(-50%); max-width: none; max-height: none;"}
 
-But the `ggplot` doesnt follow the theme...
+
 
 ---
 
 <div class="slide-header" style="display:flex;  gap:10px;">
-  <img src="images\thematic.png" alt="Thematic Logo" style="height:3.5em; width:auto; margin-top: 0rem;"/>
+  <img src="images\thematic.png" alt="Thematic Logo" style="height:3em; width:auto; margin-top: 0rem;"/>
   <p class="s-title">dynamic ggplot theme</p> 
 </div>
 
@@ -373,20 +380,15 @@ server <- function(input, output) {
 
 ---
 
-<div class="slide-header" style="display:flex;  gap:10px;">
-  <img src="images\thematic.png" alt="Thematic Logo" style="height:3.5em; width:auto; margin-top: 0rem;"/>
-  <p class="s-title">dynamic ggplot theme</p> 
-</div>
+![](images/shiny_app/minty_thematic.png){.round .absolute top="-5%" left="50%" width="125%" style="transform: translateX(-50%); max-width: none; max-height: none;"}
 
-![](images/shiny_app/minty_thematic.png){.round fig-align="center" width=100%}
 
----
 
-[Icons and Value Boxes]{.topic}
+# Icons, value boxes, and widgets
 
 ---
 
-[`{bsicons}` ]{.s-title} 
+[{bsicons}, {fontawesome}, shiny::icon() ]{.s-title} 
 
 [https://icons.getbootstrap.com/](https://icons.getbootstrap.com/){.center}
 
@@ -394,19 +396,19 @@ server <- function(input, output) {
 
 ---
 
-```{.r filename="ui.R"}
+[Value Box w/ Icon]{.s-title}
 
+```{.r filename="ui.R"}
 value_box(
   value = nrow(penguins),
   title = "Total Penguins",
-  showcase = bsicons::bs_icon("hash"),
+  showcase = bsicons::bs_icon("hash"), # insert icon
   theme = "primary"
 )
-
 ```
+---
 
-
-![](images/shiny_app/minty_vb.png){.round fig-align="center" width=100%}
+![](images/shiny_app/minty_vb.png){.round .absolute top="-5%" left="50%" width="125%" style="transform: translateX(-50%); max-width: none; max-height: none;"}
 
 ---
 
@@ -414,76 +416,90 @@ value_box(
 
 `shinyWidgets::shinyWidgetsGallery()` for full gallery
 
-![](images/shinywidgets.png){.round fig-align="center" width=100%}
+![](images/shinywidgets.png){.round fig-align="center"}
 
 ---
 
-![](images/shiny_app/shinywidgets_bslib.png){.round width=100%}
+```{.r filename="ui.R" code-line-numbers="5"}
+# ... UI Code ...
+layout_sidebar(
+      sidebar = sidebar(
+        # ... Other sidebar code ...
+shinyWidgets::pickerInput() # pretty widgets
+))
+  # ... Other UI code ...
+```
+
 
 ---
 
-# HTML and CSS
+![](images/shiny_app/shinywidgets_bslib.png){.round .absolute top="-5%" left="50%" width="125%" style="transform: translateX(-50%); max-width: none; max-height: none;"}
+
+
+# Custom HTML and CSS
 
 ---
 
 
-
-
-![](images/htmltools.png){width=20% fig-align="center"} 
 
 
 
 :::: {.columns}
-::: {.column width="60%"}
-
-Create custom HTML elements and CSS styles directly in R Shiny with `{htmltools}`
-
-:::
-
 ::: {.column width="40%"}
+
+![](images/htmltools.png)
 
 - `tags$p()`
 - `tags$div()`
 - `tags$img()`
-- `tags$style()`
+- `tags$h1()`
+:::
+
+::: {.column width="60%"}
+
+
+Create custom HTML elements and CSS styles directly in R Shiny with `{htmltools}`
 
 :::
 ::::
 
 ---
 
-```{.r filename="ui.R"}
+Add an image of a sablefish with label in app
 
-
+```{.r filename="ui.R" code-line-numbers="4-15"}
+layout_sidebar(
+      sidebar = sidebar(
+        # ... Other sidebar code ...
+# image of a sablefish 
 htmltools::tags$img(
   src = "sablefish.jpg", # adding sablefish image to sidebar
   width = "100%",
   style = "margin-top: 1rem; border-radius: 6px;" #CSS
 )
 
+# image text
 htmltools::tags$p(
-  "Sablefish are deep-sea fish found in the North Pacific, known for their rich flavor and high oil content.",
+  "Sablefish are deep-sea fish found in the North Pacific, 
+  known for their rich flavor and high oil content.",
   style = "color: teal; font-size: 0.8rem; font-style: italic;"
-)
+)))
+# ... Other UI code ...
 ```
 
+---
 
-![](images/shiny_app/minty_sable.png){.round fig-align="center" width=100%}
+![](images/shiny_app/minty_sable.png){.round .absolute top="-5%" left="50%" width="125%" style="transform: translateX(-50%); max-width: none; max-height: none;"}
+
+
+
+# CSS Heirarchy
 
 ---
 
-[CSS]{.title} 
-
----
-
-[Heirarchy of CSS]{.s-title}
 
 
 1. Inline (Highest priority)
-
-2. Internal (medium priority)
-
-3. External CSS (Lowest priority, but best practice)
 
 ```{.r filename="ui.R"}
 # 1. Inline
@@ -491,11 +507,12 @@ htmltools::tags$img(
   src = "sablefish.jpg",
   style = "margin-top: 1rem; border-radius: 6px;" #CSS
 )
+```
 
-# 2. Internal 
-tags$head(tags$style()) # calling CSS rules directly in the app
+2. External (Lowest priority, but best practice)
 
-# 3. External
+```{.r filename="ui.R"}
+# 2. External
 tags$head(tags$link()) # calling an external CSS file out of app
 ```
 
@@ -528,6 +545,18 @@ ui <- page_navbar(
 
 <!-- ![](images/img_css.png){.round fig-align="center" width=100%}  -->
 
+```{.r filename="ui.R"}
+htmltools::tags$img(
+  src = "sablefish.jpg",
+  style = "margin-top: 1rem; border-radius: 6px;" #CSS
+)
+```
+
+<div style="text-align: center;">
+  {{< iconify line-md:arrow-down size=2xl >}}
+</div>
+
+
 ```{.css filename="styles.css"}
 /* All images will have these styles applied  */
 
@@ -537,45 +566,66 @@ img {
 }
 ```
 
----
-
-![](images/shiny_app/inspector.png){.round fig-align="center" width=100%}
 
 ---
 
-Targeting the [class]{.number-header} of an element
+## Selector Types
 
-```{.css filename="styles.css"}
-.control-label { /* changing label styles */
-    font-weight: bold; 
-    font-size: 1.1rem; 
-    color: #021d31ff;
-    text-decoration: underline;
-}
-
-.card-header { /* changing card header styles */
-    background-color: teal;
-    color: white;
-    font-style: italic;
-}
-
-.bslib-sidebar-layout>.main { /* changing main panel background */
-    background-color: #021d31ff;
-}
-```
----
-
-![](images/shiny_app/bslib_css.png){.round fig-align="center" width=100%}
-
----
-
----
-
-## Common Selector Types
-
-1. [HTML Tag:]{.number-header} targets all *tag* elements of a specific type (e.g., `p`, `h1`, `div`).
+1. [HTML Tag:]{.number-header} targets all *tag* elements of a specific type (`img`, `p`, `h1`, `div`).
 2. [Class Selector:]{.number-header} targets elements with a specific *class* attribute (e.g., `.my-class`).
 3. [ID Selector:]{.number-header} targets a single element with a specific *id* attribute (e.g., `#my-id`).
 
 
 ---
+
+![](images/shiny_app/inspector.png){.round .absolute top="-5%" left="50%" width="125%" style="transform: translateX(-50%); max-width: none; max-height: none;"}
+
+---
+
+Targeting the [tag, class,]{.number-header} and [ID]{.number-header}
+
+```{.css filename="styles.css"}
+/* targeting HTML tag <img> */
+img {
+    border: #2f99a7ff solid 2px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* targeting HTML class .control-label */
+.control-label {
+    font-weight: bold; 
+    color: #021d31ff; 
+    text-decoration: underline; 
+}
+
+.card-header {
+    background-color: #2f99a7ff;
+    color: white;
+    font-style: italic;
+} 
+
+/* targeting HTML id */
+#mass_range-label {
+    color: purple;
+}
+```
+---
+
+![](images/shiny_app/bslib_css.png){.round .absolute top="-5%" left="50%" width="125%" style="transform: translateX(-50%); max-width: none; max-height: none;"}
+
+---
+
+## Approach
+
+1. [~90%]{.number-header} `{bslib}` + packages: 
+    - style big pictures 
+    - theme, layout, icons, widgets
+2. [~10%]{.number-header} HTML and CSS: 
+    - fine-tuning  
+    - specific elements
+
+# Thank you 
+
+[{{< iconify mdi:github size=2xl >}} https://github.com/ramhunte/shiny-aesthetics](https://github.com/ramhunte/shiny-aesthetics)
+

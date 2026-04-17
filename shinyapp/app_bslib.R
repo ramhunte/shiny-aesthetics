@@ -13,17 +13,21 @@ ui <- page_navbar(
     bootswatch = "minty", # start with a pre-built theme
     fg = "#293f2fff", # change foreground color
     bg = "#e5f2fcff", # change background color
-    "navbar-bg" = "#021d31ff", # navbar background
     primary = "#2f99a7ff", # accents
     base_font = font_google("Roboto"), # fonts
     heading_font = font_google("Pacifico") # fonts
   ),
 
-  # tags$head(tags$link(
-  #   rel = "stylesheet",
-  #   type = "text/css",
-  #   href = "styles.css"
-  # )),
+  navbar_options = bslib::navbar_options(
+    bg = "#021d31ff"
+  ),
+
+
+  tags$head(tags$link(
+    rel = "stylesheet",
+    type = "text/css",
+    href = "styles.css"
+  )),
 
   nav_panel(
     "Scatter Plot",
@@ -36,9 +40,9 @@ ui <- page_navbar(
           max = 6300,
           value = c(3000, 6000)
         ),
-        pickerInput(
-          "color_var",
-          "Color by:",
+        shinyWidgets::pickerInput(
+          inputId = "color_var",
+          label = "Color by:",
           choices = c(
             "Species" = "species",
             "Island" = "island",
@@ -55,7 +59,7 @@ ui <- page_navbar(
           value = FALSE
         ),
 
-        htmltools::img(
+        htmltools::tags$img(
           src = "sablefish.jpg",
           width = "100%",
           style = "margin-top: 1rem; border-radius: 6px;"

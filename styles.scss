@@ -9,14 +9,14 @@ $font-poppins: "Poppins", sans-serif;
 $blue_dark: #042A2B;
 $blue_light: #a0dce6;
 $green: #3D7068;
-$grey: #77878B;
+$grey: #9cc3cd;
 $green_grey: #3A4E48;
 $eggshell: #EEEBD3;
 $mint: #59C9A5;
 $gold: #B7990D;
 $body-bg: $blue_dark;
 $body-color: $eggshell;
-$heading-color: $grey;
+$presentation-heading-color: $grey;
 $link-color: $gold;
 $code-bg: transparent;
 $code-color: $gold;
@@ -51,6 +51,7 @@ hr {
     box-shadow: 0 5px 12px rgba($blue_light, 0.4);
 }
 
+
 .topic {
     font-family: $font-poppins;
     font-style: italic;
@@ -58,11 +59,6 @@ hr {
     font-size: 2em;
     text-align: center;
     justify-content: center;
-}
-
-.column {
-    // padding-left: 2px;
-    // padding-right: 2px;
 }
 
 .reveal .footer {
